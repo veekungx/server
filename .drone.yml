@@ -11,17 +11,17 @@ pipeline:
     secrets: [docker_username,docker_password]
     tags:
       - latest
-      - "dev-${DRONE_COMMIT_SHA:8}"
+      - "dev-${DRONE_COMMIT_SHA:0:8}"
     when:
       event: push
       branch: master
 
-  helm-chartmuseum:
-    image: quay.io/honestbee/drone-chartmuseum
-    repo_url: http://chartmuseum.easysunday.com
-    chart_path: chart/server
-    when:
-      branch: master
+  # helm-chartmuseum:
+  #   image: quay.io/honestbee/drone-chartmuseum
+  #   repo_url: http://chartmuseum.easysunday.com
+  #   chart_path: chart/server
+  #   when:
+  #     branch: master
 
   # helm_deploy_staging:
   #   image: quay.io/ipedrazas/drone-helm
