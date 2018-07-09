@@ -38,6 +38,7 @@ pipeline:
   #     event: push
   #     branch: master
 
+
   tagged_docker:
     image: plugins/docker
     repo: veekungx/server
