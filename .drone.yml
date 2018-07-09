@@ -1,0 +1,50 @@
+pipeline:
+  unit-test:
+    image: node:alpine
+    commands:
+      - yarn install
+      - yarn test
+  
+  dockerhub:
+    image: plugins/docker
+    repo: veekungx/server
+    secrets: [docker_username,docker_password]
+    tags:
+      - latest
+      - "dev-${DRONE_COMMIT_SHA:8}"
+    when:
+      event: push
+      branch: master
+
+  helm-chartmuseum:
+    image: quay.io/honestbee/drone-chartmuseum
+    repo_url: http://chartmuseum.easysunday.com
+    chart_path: chart/server
+    when:
+      branch: master
+
+  # helm_deploy_staging:
+  #   image: quay.io/ipedrazas/drone-helm
+  #   skip_tls_verify: true
+  #   chart: ./charts/server
+  #   release: 'thi-server'
+  #   wait: true
+  #   recreate_pods: true
+  #   service_account: tiller
+  #   secrets: [api_server, kubernetes_token]
+  #   namespace: thi
+  #   debug: true
+  #   when:
+  #     event: push
+  #     branch: master
+
+  tagged_docker:
+    image: plugins/docker
+    repo: veekungx/server
+    secrets: [docker_username,docker_password]
+    tags:
+      - latest
+      - "dev-${DRONE_COMMIT_SHA}"
+      - "${DRONE_TAG##v}"
+    when:
+      event: tag
