@@ -31,11 +31,12 @@ pipeline:
     skip_tls_verify: true
     helm_repos: sunday=http://chartmuseum.easysunday.com
     chart: sunday/preview
-    wait: true
+    # wait: true
     release: ${DRONE_REPO_NAME}-${DRONE_PULL_REQUEST}
     values: server.image.tag=preview
     secrets: [api_server, kubernetes_token]
-    namespace: ${DRONE_REPO_NAME}-${DRONE_PULL_REQUEST}
+    # namespace: ${DRONE_REPO_NAME}-${DRONE_PULL_REQUEST}
+    namespace: preview
     debug: true
     when:
       event: pull_request

@@ -12,7 +12,7 @@ const books = [
     title: 'Jurassic Park',
     author: 'Michael Crichton',
   },
-  {
+  { 
     title: 'Maze',
     author: 'Me',
   },
