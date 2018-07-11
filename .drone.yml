@@ -57,6 +57,7 @@ pipeline:
     debug: true
     when:
       event: pull_request
+  
 
   # helm-chartmuseum:
   #   image: quay.io/honestbee/drone-chartmuseum
