@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start:prod": "node dist/index.js",
-    "start": "nodemon -e ts,graphql -x ts-node src/index.ts",
+    "start": "dotenv -- nodemon -e ts,graphql -x ts-node src/index.ts",
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel start playground",
     "test": "mocha src/**/*.spec.js",
