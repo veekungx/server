@@ -1,9 +1,9 @@
 pipeline:
-  unit-test:
-    image: node:alpine
-    commands:
-      - yarn install
-      - yarn test
+  # unit-test:
+  #   image: node:alpine
+  #   commands:
+  #     - yarn install
+  #     - yarn test
   
   dockerhub:
     image: plugins/docker
