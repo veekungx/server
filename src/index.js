@@ -16,6 +16,10 @@ const books = [
     title: 'Maze',
     author: 'Me',
   },
+  { 
+    title: 'Amuse',
+    author: 'Zen',
+  },
 ];
 
 // Type definitions define the "shape" of your data and specify
