@@ -1,0 +1,17 @@
+# source: http://localhost:4000
+# timestamp: Wed Jul 11 2018 21:02:22 GMT+0700 (Indochina Time)
+
+type Query {
+  todos: [Todo!]!
+}
+
+type Todo {
+  id: ID!
+  text: String!
+}
+
+"""
+The `Upload` scalar type represents a file upload promise that resolves an
+object containing `stream`, `filename`, `mimetype` and `encoding`.
+"""
+scalar Upload

@@ -2,5 +2,6 @@ FROM node:alpine
 WORKDIR /usr/app
 COPY . .
 RUN yarn install
-CMD ["yarn","start"]
+RUN yarn build
+CMD ["yarn","start:prod"]
 EXPOSE 4000
