@@ -14,6 +14,7 @@ const typeDefs = gql`
 
   type Mutation{
     addTodo(text: String!): Todo
+    removeTodo(id: ID!): Todo
   }
 `;
 
@@ -24,7 +25,8 @@ const server = new ApolloServer({
       todos: (parent, args, ctx: Context, info) => ctx.db.query.todoes({}),
     },
     Mutation: {
-      addTodo: (parent, args, ctx: Context, info) => ctx.db.mutation.createTodo({ data: { text: args.text } })
+      addTodo: (parent, args, ctx: Context, info) => ctx.db.mutation.createTodo({ data: { text: args.text } }),
+      removeTodo: (parent, args, ctx: Context, info) => ctx.db.mutation.deleteTodo({ where: { id: args.id } }),
     }
   },
   context: req => ({
